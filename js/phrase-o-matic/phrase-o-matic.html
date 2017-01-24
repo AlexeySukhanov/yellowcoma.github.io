@@ -13,7 +13,7 @@
 				  46, 31, 57, 52, 44, 18,
 				  41, 53, 55, 61, 51, 44];
 	function solutionList(){
-		var maxShore = shores[0];
+		var maxShore = 0;
 		var highestResults = [];
 		var i = 0;
 		var highestResultsString = "";
@@ -24,11 +24,9 @@
 			}
 		}
 
-		var z = 0;
 		for( var j=0; j<shores.length; j++){
 			if (shores[j] == maxShore){
-				highestResults[z] = j;
-				z++;
+				highestResults.push(j); // добавление элемента в массив методом .push
 			}
 		}
 
