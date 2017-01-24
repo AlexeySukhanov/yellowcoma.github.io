@@ -15,7 +15,6 @@
 	function solutionList(){
 		var maxShore = 0;
 		var highestResults = [];
-		var i = 0;
 		var highestResultsString = "";
 		for (var i=0; i<shores.length; i++){
 			document.write('Bubble solution #' + i + ' score: ' + shores[i] + '<br>');
@@ -24,15 +23,15 @@
 			}
 		}
 
-		for( var j=0; j<shores.length; j++){
+		for( var i=0; i<shores.length; i++){
 			if (shores[j] == maxShore){
-				highestResults.push(j); // добавление элемента в массив методом .push
+				highestResults.push(i); // добавление элемента в массив методом .push
 			}
 		}
 
-		for(var y=0; y<highestResults.length; y++){
-			highestResultsString = highestResultsString + '#' + highestResults[y];
-			if (highestResults[y+1] != undefined){
+		for(var i=0; i<highestResults.length; i++){
+			highestResultsString = highestResultsString + '#' + highestResults[i];
+			if (highestResults[i+1] != undefined){
 				highestResultsString = highestResultsString + ', '
 			} else {
 				highestResultsString = highestResultsString + '.'
