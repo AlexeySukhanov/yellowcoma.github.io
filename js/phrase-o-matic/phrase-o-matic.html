@@ -17,38 +17,35 @@
 		var highestResults = [];
 		var i = 0;
 		var highestResultsString = "";
-		while (i < shores.length){ // вывод списка значений массива
+		for (var i=0; i<shores.length; i++){
 			document.write('Bubble solution #' + i + ' score: ' + shores[i] + '<br>');
 			if (maxShore<shores[i]){ // вычисление максимального значения
 				maxShore = shores[i];
 			}
-			i++;
 		}
-		var j = 0;
+
 		var z = 0;
-		while (j < shores.length){ // создание массива с максимальными значениями первого массива
+		for( var j=0; j<shores.length; j++){
 			if (shores[j] == maxShore){
 				highestResults[z] = j;
 				z++;
 			}
 			j++;
 		}
-		var y = 0;
-		while(y < highestResults.length){ // формирование строки с индексами максимальных значений
+
+		for(var y=0; y<highestResults.length; y++){
 			highestResultsString = highestResultsString + '#' + highestResults[y];
 			if (highestResults[y+1] != undefined){
 				highestResultsString = highestResultsString + ', '
 			} else {
 				highestResultsString = highestResultsString + '.'
 			}
-			y++;
 		}
 
 		document.write('<br>Bubbles tests: ' + shores.length + '<br>');
 		document.write('Highest bubble score: ' + maxShore + '<br>');
 		document.write('Solutions with highest score: ' + highestResultsString);
 	}
-
 
 	solutionList();
 	</script>
