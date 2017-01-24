@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Phrase-o-matic</title>
+</head>
+<body>
+	<script>
+	var shores = [60, 50, 60, 58, 54, 54,
+				  58, 50, 52, 54, 48, 69,
+				  34, 55, 51, 52, 44, 51,
+				  69, 64, 66, 55, 52, 61,
+				  46, 31, 57, 52, 44, 18,
+				  41, 53, 55, 61, 51, 44];
+	function solutionList(){
+		var maxShore = shores[0];
+		var highestResults = [];
+		var i = 0;
+		var highestResultsString = "";
+		while (i < shores.length){ // вывод списка значений массива
+			document.write('Bubble solution #' + i + ' score: ' + shores[i] + '<br>');
+			if (maxShore<shores[i]){ // вычисление максимального значения
+				maxShore = shores[i];
+			}
+			i++;
+		}
+		var j = 0;
+		var z = 0;
+		while (j < shores.length){ // создание массива с максимальными значениями первого массива
+			if (shores[j] == maxShore){
+				highestResults[z] = j;
+				z++;
+			}
+			j++;
+		}
+		var y = 0;
+		while(y < highestResults.length){ // формирование строки с индексами максимальных значений
+			highestResultsString = highestResultsString + '#' + highestResults[y];
+			if (highestResults[y+1] != undefined){
+				highestResultsString = highestResultsString + ', '
+			} else {
+				highestResultsString = highestResultsString + '.'
+			}
+			y++;
+		}
+
+		document.write('<br>Bubbles tests: ' + shores.length + '<br>');
+		document.write('Highest bubble score: ' + maxShore + '<br>');
+		document.write('Solutions with highest score: ' + highestResultsString);
+	}
+
+
+	solutionList();
+	</script>
+
+</body>
+</html>
