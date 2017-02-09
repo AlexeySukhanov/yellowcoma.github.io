@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<title>flat-menu</title>
+	<style>
+		body{
+			margin: 0;
+		}
+		nav{
+			background-color: #a64dff;
+		}
+		nav ul{
+			width: 1084px;
+			margin: 0 auto;
+			padding: 0;
+		}
+		nav li{
+			display: inline-block;
+			list-style: none;
+		}
+		nav a{
+			display: inline-block;
+			font: 18px Impact, Helvetica, sans-serif;
+			text-decoration: none;
+			letter-spacing: .15em;
+			padding: 12px 12px;
+		}
+		.mainNav{
+			position: relative;
+
+		}
+		.mainNav a{
+			text-transform: uppercase;
+			color: #fff;
+		}
+		.mainNav a:hover{
+			background-color: #eee;
+			color: #a0a0a0;
+		}
+		.subNav{
+			position: absolute;
+			background-color: #eee;
+			left: 0;
+			width:100%;
+
+			display: none;
+		}
+		.subNav a{
+			color: #a0a0a0;
+			text-transform: capitalize;
+			font-size: 14px;
+		}
+
+		li:hover a ~ .subNav{
+			display: block;
+		}
+
+		.subNav:before{
+			content: "";
+			display: block;
+			position: absolute;
+			width: 100%;
+			margin-left: -100%;
+			top: 0px;
+			height: 42px;
+			background-color: #eee;
+			box-shadow: -5px 2px 5px 0px rgba(0,0,0,0.2);
+		}
+		.subNav:after{
+			content: "";
+			display: block;
+			position: absolute;
+			width: 100%;
+			z-index: -1;
+			top: 0;
+			height: 42px;
+			padding-right: calc((100vw - 1084px) / 2);
+			background-color: #eee;
+			box-shadow: -5px 2px 5px 0px rgba(0,0,0,0.2);
+		}
+	</style>
+</head>
+<body>
+	<nav id="navWrap">
+		<ul class="mainNav">
+			<li>
+				<a href="#">Home</a>
+			</li>
+			<li>
+				<a href="#">News</a>
+			</li>
+			<li>
+				<a href="#">Economics</a>
+			</li>
+			<li>
+				<a href="#">Local</a>
+			</li>
+			<li>
+				<a href="#">Sport</a>
+			</li>
+			<li>
+				<a href="#">Culture</a>
+			</li>
+			<li>
+				<a href="#">Travels</a>
+				<ul class="subNav">
+					<li><a href="#">Amsterdam</a></li>
+					<li><a href="#">Bahamas</a></li>
+					<li><a href="#">Jamaica</a></li>
+					<li><a href="#">Las Vegas</a></li>
+					<li><a href="#">London</a></li>
+					<li><a href="#">Los Angeles</a></li>
+					<li><a href="#">Miami</a></li>
+					<li><a href="#">Montreal</a></li>
+					<li><a href="#">Paris</a></li>
+					<li><a href="#">Rome</a></li>
+				</ul>
+			</li>
+			<li>
+				<a href="#">Living</a>
+				<ul class="subNav">
+					<li><a href="#">ipsum1 </a></li>
+					<li><a href="#">ipsum2 </a></li>
+					<li><a href="#">ipsum3 </a></li>
+					<li><a href="#">ipsum4 </a></li>
+					<li><a href="#">ipsum5 </a></li>
+					<li><a href="#">ipsum6 </a></li>
+					<li><a href="#">ipsum7 </a></li>
+					<li><a href="#">ipsum8 </a></li>
+					<li><a href="#">ipsum9 </a></li>
+					<li><a href="#">ipsum0 </a></li>
+				</ul>
+			</li>
+			<li>
+				<a href="#">Money</a>
+				<ul class="subNav">
+					<li><a href="#">ipsum1 </a></li>
+					<li><a href="#">ipsum2 </a></li>
+					<li><a href="#">ipsum3 </a></li>
+					<li><a href="#">ipsum4 </a></li>
+					<li><a href="#">ipsum5 </a></li>
+					<li><a href="#">ipsum6 </a></li>
+					<li><a href="#">ipsum7 </a></li>
+					<li><a href="#">ipsum8 </a></li>
+					<li><a href="#">ipsum9 </a></li>
+					<li><a href="#">ipsum0 </a></li>
+				</ul>
+			</li>
+			<li>
+				<a href="#">Technology</a>
+			</li>
+			<li>
+				<a href="#">More</a>
+			</li>
+		</ul>
+	</nav>
+
+<!-- Изменение параметров стиля элемента при наведении мыши на другой -->
+<script>
+	function init(){
+		var hover = document.getElementsByClassName('subNav');
+		for (var i = 0; i < hover.length; i++) { // Перебор всех .subNav
+			var subNavStyle = getComputedStyle(hover.item(i)); // Получение стилей текущего .subNav
+			var navWrap = document.getElementById('navWrap'); // Получение ссылки на изменяемый элемент
+			if(subNavStyle.display == "block"){
+				navWrap.setAttribute("style", "box-shadow: none;");
+				break;
+			} else {
+				navWrap.setAttribute("style", "box-shadow: -5px 1px 5px 0px rgba(0,0,0,0.5);");
+			}
+		}
+	}
+	window.onload = init;  // Привязка функции к событию onload
+	window.onmouseover = init;  // Привязка функции к событию onmouseover
+</script>
+
+</body>
+</html>
