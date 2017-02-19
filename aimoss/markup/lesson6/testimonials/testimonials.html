@@ -2,25 +2,105 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Document</title>
+	<title>Testimonials</title>
+	<style type="text/css">
+
+		.testi{
+			background: url(bg.png) no-repeat;
+			background-size: cover;
+			width: 100%;
+			min-height: 315px;
+			text-align: center;
+			font-family: 'Trebuchet MS', sans-serif;
+			border: 1px solid transparent;
+
+		}
+		.testi-title{
+			color: #3170a8;
+			font-size: 40px;
+			text-transform: uppercase;
+			margin: 50px auto 40px;
+		}
+		.testi-title span{
+			color: #ee8129;
+		}
+		.testi-item{
+			display: inline-block;
+			max-width: 700px;
+			text-align: left;
+			height: 98px;
+			margin: 40px;
+			margin-top: 0;
+			font-size: 13px;
+		}
+		.testi-item img{
+			display: inline-block;
+			padding-right: 27px;
+
+		}
+		.testi-text{
+			display: inline-block;
+			background-color: #fff;
+			min-height: 98px;
+			width: 365px;
+			vertical-align: top;
+			position: relative;
+			padding: 14px;
+			box-sizing: border-box;
+			color: #666;
+		}
+		.testi-text:before{
+			position: absolute;
+			top: 34px;
+			left: -28px;
+			display: block;
+			width: 1px;
+			height: 1px;
+			background-color: transparent;
+			content: "";
+			border-right: 15px solid #fff;
+			border-top: 12px solid transparent;
+			border-bottom: 12px solid transparent;
+			border-left: 12px solid transparent;
+		}
+		.testi-header{
+			color:#3070a8;
+			font-style: italic;
+			border-bottom: 1px dotted #666;
+			padding-bottom: 12px;
+			margin-bottom: 12px;
+		}
+		.testi-name:before{
+			content: "- ";
+			display: inline;
+		}
+		.testi-name:after{
+			content: "Customer";
+			display: block;
+			position: absolute;
+			left: calc(100% - 55px - 14px);
+			top: 15px;
+		}
+
+	</style>
 </head>
 <body>
 	<div class="outer">
 		<div class="testi">
+			<h2 class=testi-title>What client <span>says</span></h2>
 			<div class="testi-item">
-				<img src="" alt="" class="testi-foto">
+				<img src="foto1.jpg" alt="" class="testi-foto">
 				<div class="testi-text">
 					<div class="testi-header">
 						<span class="testi-name">Staciya Trollio</span>
-						<span class="customer">Customer</span>
 					</div>
 					<div class="texti-content">
-						Lorem Ipsum is simply dummy text of the printing and industry. Lorem Ipsum has been the industry.
+						Lorem Ipsum is simply dummy text lorem of the printing and industry. Lorem Ipsum has been the industry.
 					</div>
 				</div>
 			</div>
 			<div class="testi-item">
-				<img src="" alt="" class="testi-foto">
+				<img src="foto2.jpg" alt="" class="testi-foto">
 				<div class="testi-text">
 					<div class="testi-header">
 						<span class="testi-name">David Soul</span>
