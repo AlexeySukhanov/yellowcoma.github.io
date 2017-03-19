@@ -1,4 +1,50 @@
-/* BEGAN priceblock styles*/
+/* BEGIN navigation block styles */
+.navblock_wrapper{
+	width: 1024px;
+	padding-top: 40px;
+	margin: 0 auto;
+	height: 116px;
+}
+.logo_block{
+	float: left;
+	width: 433px;
+}
+.logo a{
+	font: 36px "FuturaBT-Medium", sans-serif;
+	color:#ee8129;
+	text-decoration: none;
+}
+.logo span{
+	text-transform: uppercase;
+	color: #3070a8;
+	font-weight: bold;
+}
+nav ul{
+	float: left;
+	width: 591px;
+	padding-left: 0;
+}
+nav li{
+	display: inline-block;
+	list-style: none;
+}
+nav a{
+	font: 14px "Open Sans";
+	display: inline-block;
+	text-decoration: none;
+	text-transform: uppercase;
+	padding: 0 19px 22px;
+	color: #989898;
+	border-bottom: 4px solid transparent;
+}
+
+nav a:hover{
+	color: #3070a8;
+	border-bottom: 4px solid #3070a8;
+}
+/* END navigation block styles */
+
+/* BEGIN priceblock styles*/
 	.priceblock_wrapper{
 		margin: 0 auto 76px;
 		font-size: 0;
@@ -152,7 +198,7 @@
 	}
 /* END priceblock styles*/
 
-/* BEGAN testimonials styles*/
+/* BEGIN testimonials styles*/
 	.testi{
 		background: url(../img/bg.png) no-repeat;
 		background-size: cover;
