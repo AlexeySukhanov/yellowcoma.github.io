@@ -3,9 +3,9 @@ body{
 	margin: 0;
 }
 
-	button:active{
-		padding: 0;
-	}
+button:active{
+	padding: 0;
+}
 
 /* BEGIN navigation block styles */
 .navblock_wrapper{
@@ -92,14 +92,11 @@ nav a:hover{
 		height: 59px;
 		text-transform: uppercase;
 	}
-	.aboutus_wrapper button:active{
-		padding: 0;
-	}
 /* END aboutus block styles */
 
 /* BEGIN priceblock styles*/
 	.priceblock_wrapper{
-		margin: 95px auto 76px;
+		margin: 76px auto;
 		font-size: 0;
 		text-align: center;
 	}
