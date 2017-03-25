@@ -3,6 +3,10 @@ body{
 	margin: 0;
 }
 
+	button:active{
+		padding: 0;
+	}
+
 /* BEGIN navigation block styles */
 .navblock_wrapper{
 	width: 1024px;
@@ -38,7 +42,6 @@ nav a{
 	display: inline-block;
 	text-decoration: none;
 	text-transform: uppercase;
-
 	padding: 0 19px 22px;
 	color: #989898;
 	border-bottom: 4px solid transparent;
@@ -88,6 +91,9 @@ nav a:hover{
 		width: 247px;
 		height: 59px;
 		text-transform: uppercase;
+	}
+	.aboutus_wrapper button:active{
+		padding: 0;
 	}
 /* END aboutus block styles */
 
