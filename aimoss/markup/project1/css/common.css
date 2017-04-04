@@ -50,6 +50,7 @@ nav a{
 nav a:hover{
 	color: #3070a8;
 	border-bottom: 4px solid #3070a8;
+	transition: border-bottom 0.6s ease-out;
 }
 /* END navigation block styles */
 
@@ -91,6 +92,12 @@ nav a:hover{
 		width: 247px;
 		height: 59px;
 		text-transform: uppercase;
+
+	}
+	.aboutus_wrapper button:hover {
+		background-color: #fff;
+		color: #0277bd;
+		transition: background-color .6s ease-out;
 	}
 /* END aboutus block styles */
 
@@ -119,6 +126,12 @@ nav a:hover{
 		font-size: 30px;
 		font-weight: 300;
 		text-transform: uppercase;
+	}
+	.iconblock img{
+		transition: transform 0.4s ease-out;
+	}
+	.iconblock img:hover{
+		transform: scale(1.1) rotate(360deg);
 	}
 	.iconblock p{
 		font-family: "Open Sans", sans-serif;
