@@ -13,6 +13,7 @@ button:active{
 	padding-top: 40px;
 	margin: 0 auto;
 	height: 70px;
+
 }
 .logo_block{
 	float: left;
@@ -415,3 +416,67 @@ nav a:hover{
 		top: 15px;
 	}
 /* END testimonials styles*/
+
+/* BEGIN contactsblock styles*/
+.contacts-block{
+	height: 345px;
+}
+.contacts-wrapper, .map{
+	width: 50%;
+	box-sizing: border-box;
+}
+
+.map{
+	float: right;
+}
+
+.contacts-wrapper{
+	padding-top: 20px;
+	float: left;
+}
+
+.contacts{
+	width: 250px;
+	margin: auto;
+}
+
+.contacts ul{
+	list-style: none;
+	font-family: "Open Sans", sans-serif;
+	color: #666666;
+	font-size: 14px;/* Приближение из-за подстановки шрифтов */
+	font-weight: 600;
+	line-height: 36px;/* Приближение из-за подстановки шрифтов */
+	text-align: left;
+	padding-left: 0;
+}
+
+.contacts li{
+	padding-left: 40px;
+}
+
+
+.cont-icon1, .cont-icon2, .cont-icon3{
+}
+
+.cont-icon1{
+	background: url('../img/cont-icon1.png') no-repeat 0 5px;
+}
+
+.cont-icon2{
+	background: url('../img/cont-icon2.png') no-repeat 2px 5px;
+}
+
+.cont-icon3{
+	background: url('../img/cont-icon3.png') no-repeat 0 10px;
+}
+
+.social{
+	margin-top: 26px;
+}
+
+.social a{
+	display: inline-block;
+	margin-right: 32px;
+}
+/* END contactsblock styles*/
