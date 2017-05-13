@@ -1,0 +1,21 @@
+ @import url('https://fonts.googleapis.com/css?family=Lato');
+
+body{
+	font-family: 'Lato', sans-serif;
+}
+
+.container{
+ 	max-width: 1140px;
+ 	margin: 0 auto;
+ 	text-align: center;
+}
+
+h1{
+	color:#2d3950;
+	font-size: 41px;
+}
+
+p{
+	color: #909090;
+	font-size: 15px;
+}
