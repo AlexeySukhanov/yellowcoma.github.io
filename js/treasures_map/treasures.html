@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Treasures map</title>
+	<style>
+		body{
+			text-align: center;
+		}
+		#map{
+			margin: 80px auto 0;
+			width: 600px;
+			display: block;
+		}
+	</style>
+	<script>
+		function init() {
+			var map = document.getElementById('map');
+			map.onmousemove = showCoords;
+		}
+		function showCoords(eventObj) {
+			var coords = document.getElementById('coords');
+			var coordsValue = 'X: ' + eventObj.pageX + '  Y: ' + eventObj.pageY;
+			coords.innerHTML = coordsValue;
+		}
+		window.onload = init;
+	</script>
+</head>
+<body>
+	<img id="map" src="map.png">
+	<div id="coords">Move mouse to find coordinates..</div>
+</body>
+</html>
