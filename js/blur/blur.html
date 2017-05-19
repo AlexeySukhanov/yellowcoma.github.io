@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Blur Game</title>
+	<style>
+		img{
+			margin: 40px;
+			max-width: 200px;
+			display: block;
+			float: left;
+		}
+	</style>
+	<script>
+	function init() {
+		var images = document.getElementsByTagName('img');
+		for(var i = 0; i < images.length; i++){
+			images[i].onclick = blur;
+		}
+
+	}
+
+	function blur(eventObj) {
+		var image = eventObj.target;
+		var fileName;
+		if(image.getAttribute('src') != image.id + '.jpg'){
+			console.log(image.getAttribute('src'));
+			console.log(image.id + '.jpg');
+			fileName = image.id + '.jpg'
+		} else {
+			fileName = image.id + 'blur.jpg'
+		}
+		image.src = fileName;
+	}
+
+	window.onload = init;
+
+	</script>
+</head>
+<body>
+	<img id="zero" src="zeroblur.jpg" alt="">
+	<img id="one" src="oneblur.jpg" alt="">
+	<img id="two" src="twoblur.jpg" alt="">
+</body>
+</html>
