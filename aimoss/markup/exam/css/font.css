@@ -1,0 +1,24 @@
+
+@font-face {
+    font-family: 'oleo_script';
+    src: url('oleoscript-bold-webfont.woff2') format('woff2'),
+         url('oleoscript-bold-webfont.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'oleo_script';
+    src: url('oleoscript-regular-webfont.woff2') format('woff2'),
+         url('oleoscript-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'oxygen_mono';
+    src: url('oxygenmono-regular-webfont.woff2') format('woff2'),
+         url('oxygenmono-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
