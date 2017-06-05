@@ -353,6 +353,7 @@ display: block;
 .articles__header{
 	font: 18px Oxygen, sans-serif;
 	color:#222;
+	margin-bottom: 6px;
 }
 
 .article{
@@ -402,12 +403,8 @@ display: block;
 
 .article__preview__img__block:hover .pic_a, .article__preview__img__block:hover .pic_b, .article__preview__img__block:hover .pic_c{
 	display: block;
+	z-index: 1;
 }
-
-
-
-
-
 
 
 .article__preview__img{
@@ -415,6 +412,18 @@ display: block;
 	background-color: #fff;
 	border: 1px solid #f1f1f1;
 
+}
+
+ .article__preview__img__block:hover:after{
+	content: '';
+	display: block;
+	width: 295px;
+	height: 142px;
+	position: absolute;
+	background: url(../img/prew_wrap.png) no-repeat;
+	top: 3px;
+	left: 3px;
+	z-index: 0;
 }
 
 .article__preview__text1{
@@ -476,8 +485,116 @@ display: block;
 
 /* <tabs styles> */
 
-.tabs{
+.tabs__wrapp{
 	clear: both;
+}
+
+.tabs__header{
+	font: 18px Oxygen, sans-serif;
+	color:#222;
+	margin-bottom: 6px;	
+	padding-top: 10px;
+}
+
+.tabs{
+	border: 1px solid #ececec;
+	border-radius: 3px;
+}
+
+.tabs__btns{
+	border-bottom: 1px solid #e7e7e7;
+	position: relative;
+	height: 45px;
+
+}
+
+.tabs__btns__item{
+	display: block;
+	float: left;
+	padding: 15px 12px;
+	font-size: 14px;
+	font-family: Arial, sans-serif;
+	color: #999;
+	border-right: 1px solid #e7e7e7;
+}
+
+.tabs__btns__item--active{
+	border-bottom: 1px solid white;
+	color: #666;
+}
+
+.tabs__content{
+	display: none;
+	padding: 20px;
+	clear: both;
+	overflow: hidden;
+}
+
+.tabs__content.tabs__content--active{
+	display: block;
+}
+
+.tabs__content__header{
+	font-family: Arial;
+	color: #333;
+	font-size: 14px;
+	border-bottom: 1px solid #ececec;
+	padding-bottom: 9px;
+	margin-bottom: 14px;
+}
+
+.tabs__content__links{
+	float: left;
+}
+
+.tabs__content__links__item{
+	display: block;
+	padding-left: 20px;
+	font: 12px/6px Arial, sans-serif;
+	/*margin-top: 1px;*/
+	margin-bottom: 8px;
+	color:#333;
+}
+
+.tabs__content__links__item:before{
+	content: '';
+	display: block;
+	position: relative;
+	width: 5px;
+	height: 7px;
+	background: url(../img/link-arrow.png) no-repeat;
+	top: 6px;
+	left: -16px;
+	opacity: .2;
+}
+
+
+
+.tabs__content__preview-wrap{
+	float: right;	
+}
+
+.tabs__content__preview{
+	float: left;
+	width: 279px;
+	margin-left: 37px;
+}
+
+.tabs__content__preview__img{
+	float: left;
+	margin-right: 8px;
+	padding: 3px;
+	border: 1px solid #f1f1f1;
+}
+
+.tabs__content__previews__header{
+	font: bold 12px/20px Arial, sans-serif ;
+	color: #333;
+}
+
+.tabs__content__previews__text{
+	font: 12px/20px Arial, sans-serif ;
+	color: #999;	
 }
 
 /* </tabs styles> */
