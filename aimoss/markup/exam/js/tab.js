@@ -7,8 +7,7 @@
 	}
 
 	function getActiveTabClass(eventObj) {
-
-		// tabs button clear
+		// tabs-button clear
 		var activeTab = document.getElementsByClassName('tabs__btns__item')
 		for(var i = 0; i < activeTab.length; i++){
 			if(activeTab[i].getAttribute('class') == 'tabs__btns__item tabs__btns__item--active') {
@@ -35,6 +34,3 @@
 	}
 
 		window.onload = init;
-
-
-		
