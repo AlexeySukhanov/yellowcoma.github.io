@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>task5</title>
+</head>
+<body>
+
+<script>
+
+function chessArea(n){
+	for (var y = 0; y < n; y++) {
+		var line = '';
+		for (var x = 0; x < n; x++) {
+			line += (y+x)%2 == 0 ? '#' : '&nbsp;';
+		}
+		document.write(line + '<br>');
+	}
+}
+
+
+chessArea(8);
+
+</script>
+
+
+</body>
+</html>

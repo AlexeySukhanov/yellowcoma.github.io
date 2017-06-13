@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>task2</title>
+</head>
+<body>
+
+<script>
+
+function findNatural(x, n){
+	outer: for(var i = x; i <= n; i++){
+		for(var y = 2; y < n; y++){
+			var z = 0;
+			if(i == y) continue;
+			z += i % y;
+			if(z == 0) continue outer;
+		}
+		console.log(i);
+	}
+}
+
+findNatural(2, 30);
+
+</script>
+
+
+</body>
+</html>
