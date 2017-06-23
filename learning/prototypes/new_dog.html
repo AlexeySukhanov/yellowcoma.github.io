@@ -18,14 +18,14 @@ function Dog(name, breed, weight, handler) {
 	this.blaBla = function(){
 		console.log('Bla-Bla');
 	}
-}
+}апр
 
 /* Прототип Dog */
 Dog.prototype.species = 'Canine';
 Dog.prototype.run = function() { console.log('run!'); }
 Dog.prototype.bark = function() {
 	if (this.weight > 25) {
-		console.log('Woof!'); 
+		console.log('Woof!');
 	} else {
 		console.log('Yip!');
 	}
@@ -42,7 +42,7 @@ function ShowDog(name, breed, weight, handler) {
 
 /* Прототип ShowDog */
 ShowDog.prototype = new Dog(); // Задает наследование от Dog
-ShowDog.prototype.constructor = ShowDog; // Явно задаёт свойство constructor что бы избежать наследования этого свойства от Dog 
+ShowDog.prototype.constructor = ShowDog; // Явно задаёт свойство constructor что бы избежать наследования этого свойства от Dog
 ShowDog.prototype.league = 'Webvile'
 ShowDog.prototype.stack = function() { console.log('stack!'); };
 ShowDog.prototype.bait = function() { console.log('bait!'); };
