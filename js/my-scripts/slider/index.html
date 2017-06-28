@@ -62,11 +62,6 @@
 	<script>
 
 	function imageChangeR() {
-		var images = document.getElementsByClassName('slider__item slider__item--active');
-		var slider = document.getElementById('slider');
-		var height = images[0].offsetHeight
-		slider.setAttribute('style', 'height:' + height + 'px');
-
 		var images = document.getElementsByClassName('slider__item');
 		for(var i = 0; i < images.length; i++) {
 			if(i == images.length-1) {
@@ -97,6 +92,11 @@
 	}
 
 	function init() {
+		var images = document.getElementsByClassName('slider__item slider__item--active');
+		var slider = document.getElementById('slider');
+		var height = images[0].offsetHeight
+		slider.setAttribute('style', 'height:' + height + 'px');
+
 		var arrowRight = document.getElementById('slider__arrow--right');
 		arrowRight.onclick = imageChangeR;
 		var arrowLeft = document.getElementById('slider__arrow--left');
