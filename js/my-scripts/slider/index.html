@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>slider 0.1 </title>
+	<meta name="description" content="simple responsive slider">
+	<style>
+
+		@keyframes tada {
+			0% { opacity: .4; }
+			100% { opacity: 1; }
+		}
+		@-webkit-keyframes tada {
+			0% { opacity: 0; }
+			100% { opacity: 1; }
+		}
+
+		.container{
+			text-align: center;
+			font-size: 0;
+		}
+
+		.wrapper{
+			max-width: 1200px;
+			margin: auto;
+		}
+
+		#slider{
+			position: relative;
+		}
+
+		.slider__arrow{
+			font-size: 14px;
+			line-height: 2em;
+			position: absolute;
+			top: 46%;
+			text-decoration: none;
+			font-weight: bold;
+			display: block;
+			width:  2em;
+			height: 2em;
+			border-radius: 2em;
+			background: rgba(0, 0, 0, .5);
+			color: #fff;
+			z-index: 999;
+		}
+		.slider__arrow#slider__arrow--left{ left: 10%; }
+		.slider__arrow#slider__arrow--right{ right: 10%; }
+
+		.slider__item{
+			width: 100%;
+			display: none;
+		}
+
+		.slider__item.slider__item--active{
+			display: block;
+			animation: tada 1s ease-in-out;
+			-webkit-animation: tada 1s ease-in-out;
+		}
+	</style>
+
+	<script>
+
+	function imageChangeR() {
+		var images = document.getElementsByClassName('slider__item slider__item--active');
+		var slider = document.getElementById('slider');
+		var height = images[0].offsetHeight
+		slider.setAttribute('style', 'height:' + height + 'px');
+
+		var images = document.getElementsByClassName('slider__item');
+		for(var i = 0; i < images.length; i++) {
+			if(i == images.length-1) {
+				images[i].className = 'slider__item';
+				images[0].className = 'slider__item slider__item--active';
+			}
+			if(images[i].className == 'slider__item slider__item--active') {
+				images[i].className = 'slider__item';
+				images[i+1].className = 'slider__item slider__item--active';
+				break;
+			}
+		}
+	}
+
+	function imageChangeL() {
+		var images = document.getElementsByClassName('slider__item');
+		for(var i = images.length-1; i >= 0; i--) {
+			if(i == 0) {
+				images[i].className = 'slider__item';
+				images[images.length-1].className = 'slider__item slider__item--active';
+			}
+			if(images[i].className == 'slider__item slider__item--active') {
+				images[i].className = 'slider__item';
+				images[i-1].className = 'slider__item slider__item--active';
+				break;
+			}
+		}
+	}
+
+	function init() {
+		var arrowRight = document.getElementById('slider__arrow--right');
+		arrowRight.onclick = imageChangeR;
+		var arrowLeft = document.getElementById('slider__arrow--left');
+		arrowLeft.onclick = imageChangeL;
+		setInterval(imageChangeL, 4000);
+	}
+
+	window.onload = init;
+
+	</script>
+
+</head>
+<body>
+
+<div class="container">
+	<div class="wrapper">
+		<div id="slider">
+			<a href="#" class="slider__arrow" id="slider__arrow--left"><</a>
+			<a href="#" class="slider__arrow" id="slider__arrow--right">></a>
+			<img src="http://lorempixel.com/1280/720/nature/1" alt="" class="slider__item slider__item--active">
+			<img src="http://lorempixel.com/1280/720/nature/2" alt="" class="slider__item">
+			<img src="http://lorempixel.com/1280/720/nature/3" alt="" class="slider__item">
+			<img src="http://lorempixel.com/1280/720/nature/5" alt="" class="slider__item">
+		</div>
+	</div>
+</div>
+
+</body>
+</html>
