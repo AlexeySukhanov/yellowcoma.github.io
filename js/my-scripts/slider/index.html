@@ -1,8 +1,30 @@
+
+<!-- 
+
+!!! Решить проблемму с некоректным отображением навигации при смене ширины окна браузера
+!!! Добавить анимацию скольжения кадров
+!!! Рассмотреть фозможность создать объект слайдера с соответствующими свойствами и методами
+!!! Сделать навигацию по слайдеру при помощи панели ссылок
+!!! Посмотреть аналогичные реализации слайдеров
+
+0.2:
++ Вместо дублирующих код функций imageChangeL() и imageChangeR() написанна общая imageChange();
++ Использование imageChange() позволило убрать из вёрстки id стрелок навигации;
++ Получение направления смены кадров выделено в отдельную функцию;
++ Загрузчик init сделан анонимной функцией для сокращения кода;
++ Удалён код фиксирующий высоту обёртки за не надобностью;
++ Добавлена возможность менять направление автоматической смены кадров, изменением последнего аргумента в setInterval
+  1: слева-на-право, 2: справа-на-лево;
++ Код прокомментирован.
+
+-->
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>slider 0.1 </title>
+	<title>slider 0.2 </title>
 	<meta name="description" content="simple responsive slider">
 	<style>
 
@@ -44,8 +66,8 @@
 			color: #fff;
 			z-index: 999;
 		}
-		.slider__arrow#slider__arrow--left{ left: 10%; }
-		.slider__arrow#slider__arrow--right{ right: 10%; }
+		.slider__arrow:first-of-type{ left: 10%; }
+		.slider__arrow:last-of-type{ right: 10%; }
 
 		.slider__item{
 			width: 100%;
@@ -61,61 +83,53 @@
 
 	<script>
 
-	function imageChangeR() {
+	/* Инициирующая функция */
+	window.onload = function() {
+		var arrow = document.getElementsByClassName('slider__arrow');
+		for (var i = 0; i < arrow.length; i++) {
+			arrow[i].onclick = getDirection;
+		}
+		setInterval(imageChange, 4000, 1); // последний аргумент задаёт направление смены кадров 1: слева-на-право, 2: справа-на-лево
+	};
+
+	/* Получает направление мены кадров в формате 1/-1 в зависимости от нажатой "стрелки" */
+	function getDirection(event) {
+		var direction = event.target == document.getElementsByClassName('slider__arrow')[1] ? 1 : -1;
+		imageChange(direction);
+	}
+
+	/* Осуществляет сменю изображений в слайдере путем добавления и удаления класса .slider__item--active */
+	function imageChange(direction) {
 		var images = document.getElementsByClassName('slider__item');
+		var extremeItemIn = direction == 1 ? images.length - 1 : 0, // индекс элемента "входа" при нестандартном порядке передачи класса 
+			extremeItemOut = direction == 1 ? 0 : images.length - 1; // индекс элемента "выхода" при нестандартном порядке передачи класса
 		for(var i = 0; i < images.length; i++) {
-			if(i == images.length-1) {
-				images[i].className = 'slider__item';
-				images[0].className = 'slider__item slider__item--active';
+			/* Порядок передачи класса .slider__item--active при смене с 0-вого элемента на последний (direction = -1) и с последнего на 0-ой (direction = 1) */
+			if(images[extremeItemIn].className == 'slider__item slider__item--active') {
+				images[extremeItemIn].className = 'slider__item';
+				images[extremeItemOut].className = 'slider__item slider__item--active';
+				break;
 			}
+			/* Обычный(поочередный) порядок передачи класса .slider__item--active */
 			if(images[i].className == 'slider__item slider__item--active') {
 				images[i].className = 'slider__item';
-				images[i+1].className = 'slider__item slider__item--active';
+				images[i+(1 * direction)].className = 'slider__item slider__item--active';
 				break;
 			}
 		}
 	}
-
-	function imageChangeL() {
-		var images = document.getElementsByClassName('slider__item');
-		for(var i = images.length-1; i >= 0; i--) {
-			if(i == 0) {
-				images[i].className = 'slider__item';
-				images[images.length-1].className = 'slider__item slider__item--active';
-			}
-			if(images[i].className == 'slider__item slider__item--active') {
-				images[i].className = 'slider__item';
-				images[i-1].className = 'slider__item slider__item--active';
-				break;
-			}
-		}
-	}
-
-	function init() {
-		var images = document.getElementsByClassName('slider__item slider__item--active');
-		var slider = document.getElementById('slider');
-		var height = images[0].offsetHeight
-		slider.setAttribute('style', 'height:' + height + 'px');
-
-		var arrowRight = document.getElementById('slider__arrow--right');
-		arrowRight.onclick = imageChangeR;
-		var arrowLeft = document.getElementById('slider__arrow--left');
-		arrowLeft.onclick = imageChangeL;
-		setInterval(imageChangeL, 4000);
-	}
-
-	window.onload = init;
 
 	</script>
 
 </head>
+
 <body>
 
 <div class="container">
 	<div class="wrapper">
 		<div id="slider">
-			<a href="#" class="slider__arrow" id="slider__arrow--left"><</a>
-			<a href="#" class="slider__arrow" id="slider__arrow--right">></a>
+			<a href="#" class="slider__arrow"><</a>
+			<a href="#" class="slider__arrow">></a>
 			<img src="http://lorempixel.com/1280/720/nature/1" alt="" class="slider__item slider__item--active">
 			<img src="http://lorempixel.com/1280/720/nature/2" alt="" class="slider__item">
 			<img src="http://lorempixel.com/1280/720/nature/3" alt="" class="slider__item">
