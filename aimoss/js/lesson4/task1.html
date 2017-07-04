@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+	
+<script>
+
+function getFibonacci(n) {
+	return n > 2 ? getFibonacci(n - 1) + getFibonacci(n  - 2) : 1;
+}
+
+
+console.log('1-1 ' + getFibonacci(1));
+console.log('2-1 ' + getFibonacci(2));
+console.log('3-2 ' + getFibonacci(3));
+console.log('4-3 ' + getFibonacci(4));
+console.log('5-5 ' + getFibonacci(5));
+console.log('6-8 ' + getFibonacci(6));
+console.log('7-13 ' + getFibonacci(7));
+console.log('8-21 ' + getFibonacci(8));
+console.log('9-34 ' + getFibonacci(9));
+console.log('10-55 ' + getFibonacci(10));
+console.log('11-89 ' + getFibonacci(11));
+console.log('12-144 ' + getFibonacci(12));
+
+</script>
+
+</body>
+</html>
