@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Radio-buttons, обработка события выбора </title>
+	<script>
+
+	function getRezult(obj) {
+		if (obj.target.checked) {
+			alert('Действия при выборе ' + obj.target.value + ' кнопки');
+		}
+	}
+
+	window.onload = () => {
+		var radioGroup = document.getElementsByName('radio-group');
+		for (var i = 0; i < radioGroup.length; i++) {
+			radioGroup[i].onchange = getRezult;
+		}
+	}
+
+	</script>
+</head>
+<body>
+
+
+<input type="radio" name="radio-group" value="1">1
+<input type="radio" name="radio-group" value="2">2
+<input type="radio" name="radio-group" value="3">3
+
+
+</body>
+</html>

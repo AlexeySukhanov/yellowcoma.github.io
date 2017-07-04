@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Checkbox, обработка события выбора и снятия флажка</title>
+	<script>
+
+	function getRezult(obj) {
+		if (obj.target.checked) {
+			alert('Действия если чекбокс выбран');
+		} else {
+			alert('Действия если выбор отменён');
+		}
+	}
+
+	window.onload = () => {
+		var checkbox = document.getElementById('one');
+		checkbox.onchange = getRezult;
+	}
+
+	</script>
+</head>
+<body>
+
+<label><input type="checkbox" id="one" name="one" value="Ta da!">Выбрать чекбокс</label> <br>
+
+</body>
+</html>
