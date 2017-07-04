@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Обработка события выбора элемента выпадающего списка Select</title>
+	<script>
+
+	function getRezult() {
+		var selectedIndex = document.getElementById('mySelect').selectedIndex; //Получает индекс выбранного элемента
+		var optionName = document.getElementById('mySelect').options; // Получает массив элементов <option>
+		alert('Элемент ' + optionName[selectedIndex].text + ' был выбран из списка');
+	}
+
+	window.onload = () => {
+		var select = document.getElementById('mySelect');
+		select.onchange = getRezult;
+	}
+
+	</script>
+</head>
+<body>
+
+<select name="" id="mySelect">
+	<option value="">Apple</option>
+	<option value="">Orange</option>
+	<option value="">Pineapple</option>
+	<option value="">Banana</option>
+</select>
+
+</body>
+</html>
