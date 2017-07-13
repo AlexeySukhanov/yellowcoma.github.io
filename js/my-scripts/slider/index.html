@@ -1,13 +1,16 @@
 
 <!-- 
 
-!!! Решить проблемму с некоректным отображением навигации при смене ширины окна браузера
+!!! Сделать сброс таймера на ноль после изменения изображения
 !!! Добавить анимацию скольжения кадров
 !!! Рассмотреть фозможность создать объект слайдера с соответствующими свойствами и методами
-!!! Сделать навигацию по слайдеру при помощи панели ссылок
 !!! Посмотреть аналогичные реализации слайдеров
 
-0.2:
+0.1.0:
++ Решена проблемма с некоректным отображением навигации при смене ширины окна браузера
++ Реализованна навигация по слайдеру при помощи панели ссылок
+
+0.0.2:
 + Вместо дублирующих код функций imageChangeL() и imageChangeR() написанна общая imageChange();
 + Использование imageChange() позволило убрать из вёрстки id стрелок навигации;
 + Получение направления смены кадров выделено в отдельную функцию;
@@ -24,16 +27,16 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>slider 0.2 </title>
+	<title>slider 0.1.0 </title>
 	<meta name="description" content="simple responsive slider">
 	<style>
 
 		@keyframes tada {
-			0% { opacity: .8; }
+			0% { opacity: .4; }
 			100% { opacity: 1; }
 		}
 		@-webkit-keyframes tada {
-			0% { opacity: 0; }
+			0% { opacity: .4; }
 			100% { opacity: 1; }
 		}
 
@@ -55,14 +58,14 @@
 			font-size: 14px;
 			line-height: 2em;
 			position: absolute;
-			top: 46%;
+			top: 44%;
 			text-decoration: none;
 			font-weight: bold;
 			display: block;
 			width:  2em;
 			height: 2em;
 			border-radius: 2em;
-			background: rgba(0, 0, 0, .5);
+			background-color: rgba(0, 0, 0, .5);
 			color: #fff;
 			z-index: 999;
 		}
@@ -76,8 +79,38 @@
 
 		.slider__item.slider__item--active{
 			display: block;
-			animation: tada 1s ease-in-out;
-			-webkit-animation: tada 1s ease-in-out;
+			animation: tada 2s ease-in-out;
+			-webkit-animation: tada .6s ease-in-out;
+		}
+
+		.slider__nav__wrap{
+			text-align: center;
+		}
+
+		#slider__nav{
+			padding-left: 0;
+			margin: 0 auto;
+			display: inline-block;
+			top:  -28px;
+			position: relative;
+		}
+
+		.nav__button{
+			position: relative;
+			float: left;
+			width: 12px;
+			height: 12px;
+			margin: 0 6px;
+			background-color: rgba(0, 0, 0, .5);
+			border: 1px solid #333;
+			border-radius: 12px;
+			list-style: none;
+			cursor: pointer;
+		}
+		.nav__button.nav__button--active{
+			background-color: rgba(64, 64, 64, .5);
+			border: 2px solid #999;
+			top: -1px;
 		}
 	</style>
 
@@ -89,17 +122,37 @@
 		for (var i = 0; i < arrow.length; i++) {
 			arrow[i].onclick = getDirection;
 		}
-		setInterval(imageChange, 4000, 1); // последний аргумент задаёт направление смены кадров 1: слева-на-право, 2: справа-на-лево
+		generateLinks();
+		var navButtons = document.getElementsByClassName('nav__button');
+		for (var i = 0; i < navButtons.length; i++) {
+			navButtons[i].onclick = buttonChange;
+		}
+		setInterval(imageChange, 8000, 1); // последний аргумент задаёт направление смены кадров 1: слева-на-право, 2: справа-на-лево
+		/* Обрабатываем объект события нажатия по кнопке в панели навигации */
 	};
 
-	/* Получает направление мены кадров в формате 1/-1 в зависимости от нажатой "стрелки" */
+	/* Получает направление смены кадров в формате 1/-1 в зависимости от нажатой "стрелки" */
 	function getDirection(event) {
 		var direction = event.target == document.getElementsByClassName('slider__arrow')[1] ? 1 : -1;
 		imageChange(direction);
 	}
 
+	/* Реализует возможность переключения при нажатии соответствующей кнопки */
+	function buttonChange(obj) {
+		var targetButtonNumber = obj.target.id[obj.target.id.length-1]; // Получаем номер нажатой кнопки
+		var navButtons = document.getElementsByClassName('nav__button');
+		var images = document.getElementsByClassName('slider__item');
+		/* Очистка классов .slider__item--active у изображений */
+		for (var i = 0; i < images.length; i++) {
+			images[i].className = 'slider__item';
+			i == targetButtonNumber ? navButtons[i].className = 'nav__button nav__button--active' : navButtons[i].className = 'nav__button';
+			i == targetButtonNumber ? images[i].className = 'slider__item slider__item--active' : images[i].className = 'slider__item';
+		}
+	}
+
 	/* Осуществляет сменю изображений в слайдере путем добавления и удаления класса .slider__item--active */
 	function imageChange(direction) {
+		var navButtons = document.getElementsByClassName('nav__button');
 		var images = document.getElementsByClassName('slider__item');
 		var extremeItemIn = direction == 1 ? images.length - 1 : 0, // индекс элемента "входа" при нестандартном порядке передачи класса 
 			extremeItemOut = direction == 1 ? 0 : images.length - 1; // индекс элемента "выхода" при нестандартном порядке передачи класса
@@ -108,14 +161,35 @@
 			if(images[extremeItemIn].className == 'slider__item slider__item--active') {
 				images[extremeItemIn].className = 'slider__item';
 				images[extremeItemOut].className = 'slider__item slider__item--active';
+				/* Переключение кнопок */
+				navButtons[extremeItemIn].className = 'nav__button';
+				navButtons[extremeItemOut].className = 'nav__button nav__button--active';
 				break;
 			}
 			/* Обычный(поочередный) порядок передачи класса .slider__item--active */
 			if(images[i].className == 'slider__item slider__item--active') {
 				images[i].className = 'slider__item';
 				images[i+(1 * direction)].className = 'slider__item slider__item--active';
+				/* Переключение кнопок */
+				navButtons[i].className = 'nav__button';
+				navButtons[i+(1 * direction)].className = 'nav__button nav__button--active';
 				break;
 			}
+		}
+	}
+
+	/* Генерирует панель навигации с количеством кнопок соответствующим количеству картинок */
+	function generateLinks() {
+		var nav = document.getElementById('slider__nav')
+		var images = document.getElementsByClassName('slider__item');
+		var items = [];
+		for (var i = 0; i < images.length; i++) {
+			var item= document.createElement('li');
+			item.className = 'nav__button';
+			i == 0 ? item.className = 'nav__button nav__button--active' : item.className = 'nav__button';
+			item.id = 'nav__button__item' + i;
+			items[i] = item;
+			nav.appendChild(items[i])
 		}
 	}
 
@@ -128,12 +202,19 @@
 <div class="container">
 	<div class="wrapper">
 		<div id="slider">
-			<a href="#" class="slider__arrow"><</a>
-			<a href="#" class="slider__arrow">></a>
+			<a href="#" class="slider__arrow">&#060;</a>
+			<a href="#" class="slider__arrow">&#062;</a>
 			<img src="http://lorempixel.com/1280/720/nature/1" alt="" class="slider__item slider__item--active">
 			<img src="http://lorempixel.com/1280/720/nature/2" alt="" class="slider__item">
 			<img src="http://lorempixel.com/1280/720/nature/3" alt="" class="slider__item">
 			<img src="http://lorempixel.com/1280/720/nature/5" alt="" class="slider__item">
+			<img src="http://lorempixel.com/1280/720/nature/6" alt="" class="slider__item">
+			<img src="http://lorempixel.com/1280/720/nature/7" alt="" class="slider__item">
+			<img src="http://lorempixel.com/1280/720/nature/8" alt="" class="slider__item">
+			<div class="slider__nav__wrap">
+				<ul id="slider__nav"></ul>
+			</div>
+
 		</div>
 	</div>
 </div>
