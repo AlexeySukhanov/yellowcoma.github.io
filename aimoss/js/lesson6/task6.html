@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>task 6</title>
+</head>
+<body>
+
+<script>
+
+var strings = ['кришна', 'кришна', 'харе', 'харе', 'харе', 'харе', 'кришна', 'кришна', '8-()' ];
+
+function unique(strings) {
+	var newArr = [];
+	for (var i = 0; i < strings.length; i++) {
+		if (newArr.indexOf(strings[i]) < 0){
+			newArr.push(strings[i]);
+		}
+	}
+	return newArr;
+}
+
+console.log( unique(strings) ); // кришна, харе, 8-()
+
+</script>
+
+</body>
+</html>
