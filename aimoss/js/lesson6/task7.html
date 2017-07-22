@@ -25,9 +25,9 @@ function getNewArr(arr) {
 		return overlap === string2.length && string2.length === arr1[i].length;
 	}
 
-	for (var i = 0; i < arr.length; i++) {
+	for (var i = 0; i < arr1.length; i++) {
 		if (!newArr.some(compare)) {
-			newArr.push(arr1[i]);
+			newArr.push(arr[i]);
 		}
 	}
 	return newArr;
