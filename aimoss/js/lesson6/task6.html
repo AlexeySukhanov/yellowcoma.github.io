@@ -11,14 +11,9 @@
 var strings = ['кришна', 'кришна', 'харе', 'харе', 'харе', 'харе', 'кришна', 'кришна', '8-()' ];
 
 function unique(strings) {
-	var newArr = [];
-	for (var i = 0; i < strings.length; i++) {
-		if (newArr.indexOf(strings[i]) < 0){
-			newArr.push(strings[i]);
-		}
-	}
-	return newArr;
+	return strings.filter((item, index) => strings.indexOf(item) === index ? true : false);
 }
+
 
 console.log( unique(strings) ); // кришна, харе, 8-()
 

@@ -2,25 +2,39 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>task 7</title>
+	<title>task 6</title>
 </head>
 <body>
 
 <script>
 
-var strings = ['кришна', 'кришна', 'харе', 'харе', 'харе', 'харе', 'кришна', 'кришна', '8-()' ];
+var arr = ['воз', 'киборг', 'корсет', 'ЗОВ', 'гробик', 'костер', 'сектор'];
 
-function unique(strings) {
+function getNewArr(arr) {
+	var arr1 = arr.slice().join('|').toLowerCase().split('|');
+	var arr2 = arr.slice().join('|').toLowerCase().split('|');
 	var newArr = [];
-	for (var i = 0; i < strings.length; i++) {
-		if (newArr.indexOf(strings[i]) < 0){
-			newArr.push(strings[i]);
+
+	function compare(string2) {
+		var overlap = 0;
+		for (var z = 0; z < arr1[i].length; z++) {
+			if (string2.indexOf(arr1[i][z]) !== -1) {
+				overlap++;
+			}
+		}
+		return overlap === string2.length && string2.length === arr1[i].length;
+	}
+
+	for (var i = 0; i < arr.length; i++) {
+		if (!newArr.some(compare)) {
+			newArr.push(arr1[i]);
 		}
 	}
 	return newArr;
+
 }
 
-console.log( unique(strings) ); // кришна, харе, 8-()
+console.log( getNewArr(arr) ); // 'воз,киборг,корсет' или 'ЗОВ,гробик,сектор'
 
 </script>
 
