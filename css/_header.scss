@@ -1,0 +1,259 @@
+/* HEADER */
+
+header{
+	@include fl_cont( 186px, space-between, auto );
+	@media screen and (max-width: 992px){
+		align-items: center;
+	}
+	@media screen and (max-width: 480px) {
+		height: 120px;
+	}
+
+	.logo {
+		position: relative;
+		width: 100%;
+		max-width: 754px;
+		display: flex;
+		justify-content: center;
+		@media screen and (max-width: 1670px) {
+			width: 47vw;
+		}
+
+		&__cont {
+			position: relative;
+			left: 88px;
+			width: 100%;
+			max-width: 600px;
+			display: flex;
+			justify-content: space-between;
+			margin-top: 10px;
+			align-items: center;
+			@media screen and (max-width: 1670px) {
+				left: 0;
+				margin-left: 30px;
+			}
+			@media screen and (max-width: 1257px) {
+				max-width: 445px;
+			}
+			@media screen and (max-width: 992px) {
+				margin-top: 0;
+			}
+			@media screen and (max-width: 768px) {
+				margin-left: 30px;
+			}
+
+			img {
+				@media screen and (max-width: 480px) {
+					width: 97px;
+				}
+			}
+
+
+			&__txt {
+				display: none;
+			}
+			.divider{
+				display: block;
+				width: 0;
+				height: 43px;
+				border-left: 2px solid #000;
+				@media screen and (max-width: 1257px) {
+					margin-left: 30px;
+					margin-right: 30px;
+				}
+				@media screen and (max-width: 768px) {
+					display: none;
+				}
+			}
+			&__subtxt {
+				font-size: $fsz * 2;
+					@media screen and (max-width: 1257px) {
+						font-size: $fsz * 1.4;
+					}
+					@media screen and (max-width: 768px) {
+						display: none;
+						font-size: $fsz;
+					}
+			}
+		}
+
+		#in_logo {
+			display: block;
+			width: 835px;
+			height: 17px;
+			border:2px solid #f96e3b;
+			border-right: 3px solid #f96e3b;
+			border-top: none;
+			transform: skew(-50deg);
+			position: absolute;
+			top: 0;
+			left: -90px;
+			@media screen and (max-width: 1670px) {
+				width: 50vw;
+			}
+			@media screen and (max-width: 992px) {
+				display: none;
+			}
+
+			&:before {
+				content: '';
+				display: block;
+				background-color: #f96e3b;
+				width: 835px;
+				height: 8px;
+				transform: skew(-2deg);
+				position: absolute;
+				top: 0px;
+				left: -16px;
+				@media screen and (max-width: 1670px) {
+					width: 50vw;
+				}
+			}
+
+
+		}
+	}
+
+	.phones {
+		position: relative;
+		width: 100%;
+		max-width: 34vw;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		border: 20px solid #e4e4e4;
+		border-left: 15px solid #e4e4e4;
+		border-right: none;
+		position: relative;
+		bottom: 20px;
+		font-family: Lora, serif;
+		font-weight: bold;
+		@media screen and (max-width: 1257px) {
+			width: 28vw;
+		}
+		@media screen and (max-width: 992px) {
+			bottom: 0;
+			height: 146px;
+			border-width: 16px;
+		}
+		@media screen and (max-width: 767px) {
+			width: 34vw;
+		}
+		@media screen and (max-width: 480px) {
+			height: 96px;
+			border-width: 9px;
+		}
+
+
+		&:before {
+			@include pseudo_triangle(left, #e4e4e4, 93px, 93px, -20px, -201px);
+			@media screen and (max-width: 992px) {
+				@include pseudo_triangle(left, #e4e4e4, 73px, 73px, -16px, -162px);
+			}
+			@media screen and (max-width: 480px) {
+				@include pseudo_triangle(left, #e4e4e4, 48px, 48px, -9px, -105px);
+			}
+		}
+		&:after {
+			@include pseudo_triangle(left, #ffffff, 73px, 73px, 0px, -146px);
+			@media screen and (max-width: 992px) {
+				@include pseudo_triangle(left, #ffffff, 57px, 57px, 0px, -114px);
+			}
+			@media screen and (max-width: 480px) {
+				@include pseudo_triangle(left, #ffffff, 39px, 39px, 0px, -78px);
+			}
+		}
+
+		&__cont {
+			position: relative;
+			font-weight: bold;
+			&:before {
+				@include pseudo_img(82px, 82px, 20px, -140px, url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFgAAABYCAYAAABxlTA0AAAEuElEQVR4Xu2diW4cIQyG//S+70t9/5frld5p07RJ9TU7FZ0yg5kZZ5ldI62iSGDgw2sMGPZA5+mWpLuSLm/+t/45k3Qi6ZOkH5lClzZyr1sF7ki+X5K+SDo+2MB9MLNjgH4j6WciB9lPJF2dKXutxWHyHgjPJF1ZoBdfJX1M5PCtmDtwCzRrqyJOAPxyoSYcS3qXyLon6c5Cstcq5iwAOw9dAA7AzgScxYcGB2BnAs7iQ4MDsDMBZ/GhwQHYmYCz+NDgAOxMwFl8aHAAdibgLD40OAA7E3AWHxocgJ0JOIsPDQ7AzgScxbekwZzCnkri71AirIA255KlPGEEfIYSx+1j9ZfK/ye3FcB07K0k/o4l2vtQ0o1eJgaG8mnYwJAcTro58U4TUDmwzcV29OVUHea2AvhI0gfjtzUXDtA/0R4TRRDM414GgmeI67Ak4jyeWjKSZx8BX9sExKSMAnBCY64GB+DC128u4L00EUxO2MCxGbzjziR3MzPJvd54ISXzmJukqJfypUkW2UQrIcOUWrHBNBZPAFs4lnDThuLoKM9AldysoWDELlJ0avlsu1sCbNKItWUKwM4jFoADsDMBZ/EtaTDL1NJSl70A3KzcfgQTZGmSpBzL7Fx56i4tlcfKNz3J1aykcm4W7hVulsXNuy3pfsbNe2Usj4uIq2hKrWjwRe5FxErOeSUXgANwnsCcSzDfuPJkMmrne7n920tMTuwHWxKT3KNeRiY4bLglrXK7kmUugEteAF4EE0x/ufvnTprBC6A8E1zuYiT70d8LhJmzmGT7eyGDxVqZ5Cyas8o8Adh52AJwAHYm4Cw+NHhPAOMFcP3f4kUMPbtAecteAuVzm/asJi1eBCca5hcEWtFgOnZoVKbcXkLNXkZuL4G9DPYiLCm3EmzeTYu9CMPQzlnJBeAA/JfAKpfKNaFPuWPzi7TBubiK5m0wDeRJGosXAeBchCRmxuJFUD73+BMbTgz0WMIpYJI1P8HTihdhsEDrzBKAncctAAdgZwLO4kODA7AzAWfxocEB2JmAs/jQ4ADsTMBZfGhwAHYm4Cw+NDgAOxNwFh8aHICdCTiLDw0OwM4EnMWHBgdgZwLO4tHg5xN+ASbXrH6UetWlaed+bkv8KYCJ1eIzN/EkS3oqy8krL4Pk7qTNrWst5Y/oPB/C6onZmgKDwD1+y4hj937iPgWyp8hdC8ShdhJCcJh2nFiBXLwAgRadhhOgx32KNBHLUHopioC5PmTuOhDfQOBfKapxbbD/3hq1aFYaKtQ3A1M7zkBi+0lcPiFoZCeTBTAdf7HRtpogvTFgaQgqYaOWl0ZWOQBWwNhRoNQ8vTIEhDr5BTC0uCYmbacBpx7BXCjpZW5s+q7Z338UwarBFErBfJbEpzZxy5KLhNRbE9VeW08z+WsAk5cX8/AISNyJALLlCQHyY2IYJORgc3llqu+RNANmqYbUAKZO3Cogd5dAcNGAPPY1Z0Bw87rrq0DFGymFqi7Vx63KqQXcQeYydvpAJxqJbcb/AyADwSQG1DSWFqjcKS69bLJVKEtWPgVwV3/NL9kCHZPCas9qUpbs59ZkzQHcNRpN5oMp6N73BSJajcai2WwE7RXYDs5vkZp95DRukC8AAAAASUVORK5CYII='));
+				@media screen and (max-width: 1257px) {
+					display: none;
+				}
+
+			}
+			@media screen and (max-width: 1670px) {
+				// left: 20px;
+				margin-left: 130px;
+			}
+			@media screen and (max-width: 1257px) {
+				margin-left: -38px;
+			}
+			@media screen and (max-width: 768px) {
+				margin-left: -18px;
+			}
+
+			&__title {
+				font-size: $fsz + 4px;
+				text-align: right;
+				@media screen and (max-width: 992px) {
+					display: none;
+				}
+			}
+			&__txt {
+				position: relative;
+				z-index: 1;
+				font-size: $fsz * 2;
+				text-align: right;
+				@media screen and (max-width: 768px) {
+					font-size: $fsz*1.6;
+				}
+				@media screen and (max-width: 480px) {
+					font-size: $fsz*1.2;
+				}
+				@media screen and (max-width: 360px) {
+					font-size: $fsz;
+				}
+
+
+				&--sub {
+					font-size: $fsz + 7px;
+					@media screen and (max-width: 768px) {
+						font-size: $fsz*1.2;
+					}
+					@media screen and (max-width: 480px) {
+						font-size: $fsz - 2px;
+					}
+					@media screen and (max-width: 360px) {
+						font-size: $fsz - 2px;
+					}
+				}
+
+			}
+		}
+
+		#in_phones {
+			display: block;
+			width: 140px;
+			height: 68px;
+			border:2px solid #f96e3b;
+			border-top: none;
+			border-left: none;
+			position: absolute;
+			top: 14px;
+			left: -118px;
+			transform: rotate(135deg);
+			@media screen and (max-width: 992px) {
+				width: 103px;
+				height: 103px;
+				top: 6px;
+				left: -80px;
+			}
+			@media screen and (max-width: 480px){
+				width: 67px;
+				height: 67px;
+				left: -55px;
+			}
+		}
+
+	}
+
+}
+
+
+
+
+
+/* /HEADER */

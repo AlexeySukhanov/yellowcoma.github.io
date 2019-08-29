@@ -1,0 +1,47 @@
+@mixin fl_cont( $height: auto, $justify-content: space-around, $align-items: flex-start ){
+	height: $height;
+	display: flex;
+	justify-content: $justify-content;
+	align-items: $align-items;
+}
+
+/*   */
+
+@mixin pseudo_img( $w, $h, $t, $l, $src, ){
+	display: block;
+	position: absolute;
+	content: '';
+	background-image: $src;
+	background-repeat: no-repeat;
+	background-size: cover;
+	width: $w;
+	height: $h;
+	top: $t;
+	left: $l;
+}
+
+@mixin pseudo_triangle($direction, $color, $a, $b, $t, $l ){
+	display: block;
+	position: absolute;
+	content: '';
+	background-repeat: no-repeat;
+	width: 0;
+	height: 0;
+
+	border: $b solid transparent;
+
+	@if $direction == bottom {
+		border-top: $a solid $color;
+	} @else if $direction == top {
+		border-bottom: $a solid $color;
+	} @else if $direction == left {
+		border-right: $a solid $color;
+	} @else if $direction == right {
+		border-left: $a solid $color;
+	} @else { content: 'error->mixins.scss->pseudo_triangle'; }
+
+
+	top: $t;
+	left: $l;
+}
+
